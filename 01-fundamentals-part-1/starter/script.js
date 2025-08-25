@@ -435,7 +435,7 @@ if (hasDriversLicense && hasGoodVision && !isTired) {
 }
 
 //Complex Logic with Parentheses
-const age = 20;
+const age1 = 21;
 const hasPermission = true;
 const hasExperience = false;
 
@@ -448,7 +448,7 @@ if ((age >= 18 || hasPermission) && hasExperience) {
 
 // Exercise 1: Club Entry System
 
-const age = 19;     
+const age2 = 21;     
 const hasID = true;     
 const isVIP = false;
 
@@ -457,3 +457,81 @@ if ((age >= 21 && hasID) || isVIP) {
 } else {
   console.log("Sorry, you cannot enter");
 }
+
+// Exercise 2: Weather Advisor
+
+const temperature = 25;     
+const isRaining = false;
+const isWindy = true;
+
+if (temperature >= 20 && temperature <= 30 && !isRaining && !isWindy) {
+  console.log("Perfect day!");
+} else if (temperature >= 15 && temperature <= 35 && !isRaining) {
+  console.log("Good day!");
+} else {
+  console.log("Stay inside!");
+}
+
+// Ternary Operator (Elegant One-Liners)
+const age3 = 23;
+const drink = age >= 18 ? "wine 🍷" : "water 💧";
+console.log(drink);
+let drink2;
+if (age >= 18) {
+  drink2 = "wine 🍷";
+} else {
+  drink2 = "water 💧";
+}
+console.log(drink2);
+
+//Ternary in Template Literals (Super Powerful!)
+console.log(`I like to drink ${age >= 18 ? "wine 🍷" : "water 💧"}`);
+
+// When to Use Ternary vs if/else
+const status = score >= 60 ? "passed" : "failed";
+const message = isLoggedIn ? "Welcome back!" : "Please log in";
+const discount = isPremium ? 0.2 : 0.1;
+
+if (score >= 90) {
+  console.log("Excellent!");
+  grade = "A";
+  bonus = true;
+} else if (score >= 80) {
+  console.log("Good job!");
+  grade = "B";
+}
+
+//Your Turn: Practice Ternary
+//Exercise 1: Status Messages
+// 1. login status
+const isLoggedIn = true;
+let welcomeMessage = isLoggedIn ? "Welcome back!" : "Please sign in";
+console.log(welcomeMessage);
+// 2. Price with discount
+const isPremium = false;
+let price = isPremium ? 100 * 0.8 : 100;
+console.log(price);
+
+// Exercise 2: Smart Responses
+const score = 85;
+const weather = "sunny";
+const battery = 15; 
+
+
+const scoreMessage = `Your score: ${score} (${score >= 60 ? "Passed" : "Failed"})`;
+const weatherMessage = `Weather is ${weather} (${weather === "sunny" ? "Great for outdoor activities" : "Stay inside"})`;
+const batteryMessage = `Battery: ${battery}% (${battery < 20 ? "Low battery warning" : "Battery OK"})`;
+
+console.log(scoreMessage);
+console.log(weatherMessage);
+console.log(batteryMessage);
+
+
+//🏆 Final Challenge: Tip Calculator
+
+const bill = 275;
+const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.20;
+console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`);
+
+// JavaScript Fundamentals - Hour 4
+// Insert your complete code here
