@@ -193,130 +193,172 @@
 //HOUR 3 - STRINGS AND DECISION
 
 // Strings and Template Literals
-const firstName = "Jonas";
-const job = "teacher";
-const birthYear = 1991;
-const year = 2037;
+// const firstName = "Jonas";
+// const job = "teacher";
+// const birthYear = 1991;
+// const year = 2037;
 
-const jonas =
-  "I'm " + firstName + ", a " + (year - birthYear) + " year old " + job + "!";
-console.log(jonas);
+// const jonas =
+//   "I'm " + firstName + ", a " + (year - birthYear) + " year old " + job + "!";
+// console.log(jonas);
 
-//the modern way
-const jonasNew = `I'm ${firstName}, a ${year - birthYear} year old ${job}!`;
+// //the modern way
+// const jonasNew = `I'm ${firstName}, a ${year - birthYear} year old ${job}!`;
 
-//template  literal superpowers
-console.log(`I'm ${2037 - 1991} years old`);
-console.log(`Math works: ${2 + 3} equals five`);
-console.log(`Comparisons too: ${5 > 3}`);
+// //template  literal superpowers
+// console.log(`I'm ${2037 - 1991} years old`);
+// console.log(`Math works: ${2 + 3} equals five`);
+// console.log(`Comparisons too: ${5 > 3}`);
 
-//Exercise 1: Personal Introduction
-const myName = "Fons";
-const myAge = 21;
-const myJob = "student";
-const currentYear = 2025;
+// //Exercise 1: Personal Introduction
+// const myName = "Fons";
+// const myAge = 21;
+// const myJob = "student";
+// const currentYear = 2025;
 
-const introduction1 = `Hi, I'm ${myName}, a ${myAge} year old ${myJob}!`;
-console.log(introduction1);
+// const introduction1 = `Hi, I'm ${myName}, a ${myAge} year old ${myJob}!`;
+// console.log(introduction1);
 
-const introduction2 = `Born in ${currentYear - myAge}, 10*5 = ${10 * 5}, Adult: ${myAge >= 18}`;
-console.log(introduction2);
+// const introduction2 = `Born in ${currentYear - myAge}, 10*5 = ${10 * 5}, Adult: ${myAge >= 18}`;
+// console.log(introduction2);
 
-const age = 15;
+// const age = 15;
 
-if (age >= 18) {
-  console.log("Sarah can start driving license 🚗");
-} else {
-  const yearsLeft = 18 - age;
-  console.log(`Sarah is too young. Wait another ${yearsLeft} years :)`);
-}
+// if (age >= 18) {
+//   console.log("Sarah can start driving license 🚗");
+// } else {
+//   const yearsLeft = 18 - age;
+//   console.log(`Sarah is too young. Wait another ${yearsLeft} years :)`);
+// }
 
-const birthYear2 = 2012;
-let century;
-if (birthYear <= 2004) {
-  century = 21;
-} else {
-  century = 22;
-}
-console.log(century);
+// const birthYear2 = 2012;
+// let century;
+// if (birthYear <= 2004) {
+//   century = 21;
+// } else {
+//   century = 22;
+// }
+// console.log(century);
 
-const score = 85;
+// const score = 85;
 
-if (score >= 60) {
-  console.log(`You passed with ${score} points! 🎉`);
-  console.log("Congratulations!");
-} else {
-  const pointsNeeded = 60 - score;
-  console.log(`You failed. Need ${pointsNeeded} more points.`);
-}
+// if (score >= 60) {
+//   console.log(`You passed with ${score} points! 🎉`);
+//   console.log("Congratulations!");
+// } else {
+//   const pointsNeeded = 60 - score;
+//   console.log(`You failed. Need ${pointsNeeded} more points.`);
+// }
 
-// Create a grade calculator:
-const testScore = 78; 
+// // Create a grade calculator:
+// const testScore = 78; 
 
-if (testScore >= 90) {
-  console.log("Excellent! Grade A");
-} else if (testScore >= 80) {
-  console.log("Good job! Grade B");
-} else if (testScore >= 70) {
-  console.log("Not bad! Grade C");
-} else if (testScore >= 60) {
-  console.log("You passed! Grade D");
-} else {
-  console.log("You failed! Study harder");
-}
+// if (testScore >= 90) {
+//   console.log("Excellent! Grade A");
+// } else if (testScore >= 80) {
+//   console.log("Good job! Grade B");
+// } else if (testScore >= 70) {
+//   console.log("Not bad! Grade C");
+// } else if (testScore >= 60) {
+//   console.log("You passed! Grade D");
+// } else {
+//   console.log("You failed! Study harder");
+// }
 
-// Create an age verification system:
-const userAge = 20; 
+// // Create an age verification system:
+// const userAge = 20; 
 
-if (userAge >= 18) {
-  console.log("Welcome! You can access all content");
-} else if (userAge >= 13) {
-  console.log("Welcome! Restricted content only");
-} else {
-  console.log("Sorry, you're too young");
-}
+// if (userAge >= 18) {
+//   console.log("Welcome! You can access all content");
+// } else if (userAge >= 13) {
+//   console.log("Welcome! Restricted content only");
+// } else {
+//   console.log("Sorry, you're too young");
+// }
 
-////////////////////////////////////
-// Truthy and Falsy Values
+// // Truthy and Falsy Values
 
-// 5 falsy values: 0, '', undefined, null, NaN
-console.log(Boolean(0)); 
-console.log(Boolean(undefined)); 
-console.log(Boolean("Jonas")); 
-console.log(Boolean({}));
-console.log(Boolean(""));
+// // 5 falsy values: 0, '', undefined, null, NaN
+// console.log(Boolean(0)); 
+// console.log(Boolean(undefined)); 
+// console.log(Boolean("Jonas")); 
+// console.log(Boolean({}));
+// console.log(Boolean(""));
 
-//Practical Applications
-const money = 100;
-if (money) {
-  console.log("Don't spend it all ;)");
-} else {
-  console.log("You should get a job!");
-}
+// //Practical Applications
+// const money = 100;
+// if (money) {
+//   console.log("Don't spend it all ;)");
+// } else {
+//   console.log("You should get a job!");
+// }
 
-//Common Gotcha - Be Careful!
-let height = 0; 
-if (height) {
-  console.log("YAY! Height is defined");
-} else {
-  console.log("Height is UNDEFINED");
-}
+// //Common Gotcha - Be Careful!
+// let height = 0; 
+// if (height) {
+//   console.log("YAY! Height is defined");
+// } else {
+//   console.log("Height is UNDEFINED");
+// }
 
-if (height !== undefined) {
-  console.log("Height is defined");
-}
+// if (height !== undefined) {
+//   console.log("Height is defined");
+// }
 
-const values = [0, 1, "", "hello", undefined, null, NaN, {}, []];
+// const values = [0, 1, "", "hello", undefined, null, NaN, {}, []];
 
-for (const value of values) {
-  console.log("Value:", value);
-  console.log("Boolean:", Boolean(value));
+// for (const value of values) {
+//   console.log("Value:", value);
+//   console.log("Boolean:", Boolean(value));
   
-  if (value) {
-    console.log("Truthy!");
-  } else {
-    console.log("Falsy!");
-  }
+//   if (value) {
+//     console.log("Truthy!");
+//   } else {
+//     console.log("Falsy!");
+//   }
 
-  console.log("---------------");
-}
+//   console.log("---------------");
+// }
+
+// HOUR 4
+
+// Type Conversion and Coercion
+const inputYear = "2004";
+console.log(Number(inputYear), inputYear);
+console.log(Number(inputYear) + 17);
+
+console.log(Number("Fons"));
+console.log(typeof NaN);
+
+console.log(String(23), 23);
+console.log(typeof String(23));
+
+console.log("I am " + 23 + " years old");
+console.log("23" - "10" - 3);
+console.log("23" / "2");
+console.log("23" * "2");
+
+// Excercise 1: Type Conversion Detective
+console.log("5" + 2); // Guess: "52"  (string concatenation)
+console.log("5" - 2); // Guess: 3     ("5" converted to number, subtraction)
+console.log("5" * 2); // Guess: 10    ("5" converted to number, multiplication)
+console.log("5" / 2); // Guess: 2.5   ("5" converted to number, division)
+
+// Convert these explicitly:
+const userAge = "25"; // Convert to number
+const ageAsNumber = Number(userAge);
+console.log(ageAsNumber, typeof ageAsNumber); // 25 "number"
+
+const userScore = 95; // Convert to string
+const scoreAsString = String(userScore);
+console.log(scoreAsString, typeof scoreAsString);
+
+//exercise 2: fix the bug
+const num1 = prompt("First number:");  // Returns string!
+const num2 = prompt("Second number:"); // Returns string!
+
+// Fix: Convert to numbers first
+const sum = Number(num1) + Number(num2);
+
+console.log(`Sum: ${sum}`);
+
