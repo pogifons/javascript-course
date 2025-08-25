@@ -339,26 +339,121 @@ console.log("23" / "2");
 console.log("23" * "2");
 
 // Excercise 1: Type Conversion Detective
-console.log("5" + 2); // Guess: "52"  (string concatenation)
-console.log("5" - 2); // Guess: 3     ("5" converted to number, subtraction)
-console.log("5" * 2); // Guess: 10    ("5" converted to number, multiplication)
-console.log("5" / 2); // Guess: 2.5   ("5" converted to number, division)
+console.log("5" + 2);
+console.log("5" - 2); 
+console.log("5" * 2); 
+console.log("5" / 2); 
 
 // Convert these explicitly:
-const userAge = "25"; // Convert to number
+const userAge = "25"; 
 const ageAsNumber = Number(userAge);
-console.log(ageAsNumber, typeof ageAsNumber); // 25 "number"
+console.log(ageAsNumber, typeof ageAsNumber); 
 
-const userScore = 95; // Convert to string
+const userScore = 95; 
 const scoreAsString = String(userScore);
 console.log(scoreAsString, typeof scoreAsString);
 
 //exercise 2: fix the bug
-const num1 = prompt("First number:");  // Returns string!
-const num2 = prompt("Second number:"); // Returns string!
+const num1 = prompt("First number:");  
+const num2 = prompt("Second number:");  
 
 // Fix: Convert to numbers first
 const sum = Number(num1) + Number(num2);
 
 console.log(`Sum: ${sum}`);
 
+//Strict Equality (===) - The Professional Way
+const age = "18";
+if (age === 18) console.log("You just became an adult :D (strict)");
+if (age == 18) console.log("You just became an adult :D (loose)");
+console.log("18" === 18);
+console.log("18" == 18);
+console.log(18 === 18);
+
+//Loose Equality (==) - The Dangerous One
+console.log("0" == 0);
+console.log(0 == false);
+console.log("0" == false);
+console.log(null == undefined);
+
+console.log("" == 0);
+console.log("   " == 0);
+
+//Best Practice Example
+const favourite = Number(prompt("What's your favourite number?"));
+console.log(favourite);
+console.log(typeof favourite);
+
+if (favourite === 23) {
+  console.log("Cool! 23 is an amazing number!");
+} else if (favourite === 7) {
+  console.log("7 is also a cool number");
+} else if (favourite === 9) {
+  console.log("9 is also a cool number");
+} else {
+  console.log("Number is not 23 or 7 or 9");
+}
+if (favourite !== 23) console.log("Why not 23?");
+
+//Exercise 1: Equality Detective
+
+console.log(5 === "5");     
+console.log(5 == "5");  
+console.log(true === 1);    
+console.log(true == 1);         
+console.log(false === 0);   
+console.log(false == 0);    
+
+//Exercise 2: Fix the Login System
+
+const username = prompt("Username:");
+const password = prompt("Password:");
+
+if (username === "admin" && password === "1234") {
+  console.log("Welcome admin!");
+} else {
+  console.log("Access denied");
+}
+
+// Basic Logical Operators
+
+const hasDriversLicense = true; 
+const hasGoodVision = true; 
+
+console.log(hasDriversLicense && hasGoodVision);    
+console.log(hasDriversLicense || hasGoodVision); 
+console.log(!hasDriversLicense);  
+
+//Real-World Example
+const isTired = false; 
+console.log(hasDriversLicense && hasGoodVision && !isTired);
+
+if (hasDriversLicense && hasGoodVision && !isTired) {
+  console.log("Sarah is able to drive!");
+} else {
+  console.log("Someone else should drive...");
+}
+
+//Complex Logic with Parentheses
+const age = 20;
+const hasPermission = true;
+const hasExperience = false;
+
+
+if ((age >= 18 || hasPermission) && hasExperience) {
+  console.log("Approved to drive");
+} else {
+  console.log("Not approved to drive");
+}
+
+// Exercise 1: Club Entry System
+
+const age = 19;     
+const hasID = true;     
+const isVIP = false;
+
+if ((age >= 21 && hasID) || isVIP) {
+  console.log("Welcome to the club!");
+} else {
+  console.log("Sorry, you cannot enter");
+}
