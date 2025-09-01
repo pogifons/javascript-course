@@ -240,3 +240,82 @@ console.log(`Average: ${average.toFixed(1)}`);
 console.log(`Highest: ${highest}`);
 console.log(`Lowest: ${lowest}`);
 console.log(`Passing students: ${passing} out of ${grades.length}`);
+
+// Hour 3
+
+//Object Methods
+
+const  fons = {
+    firstName: "Fons",
+    lastName: "Jose",
+    birthYear: 2004,
+    job: "Student",
+    friends: ["Josh", "Mark", "Adrian"], 
+    hasDriversLicense: true,
+
+     calcAge: function (birthYear) {
+    return 2025 - birthYear;
+  },
+};
+
+console.log(fons.calcAge(2004));
+console.log(fons.calcAge(fons.birthYear));  
+
+const fonsImproved = {
+    firstName: "Fons",
+    lastName: "Jose",
+    birthYear: 2004,
+    job: "Student",
+    friends: ["Josh", "Mark", "Adrian"], 
+    hasDriversLicense: false,
+
+     calcAge: function () {
+    this.age = 2025 - this.birthYear;
+    return this.age;
+     },
+
+        getSummary: function() {
+            return `${this.firstName} is a ${this.calcAge()}-year old ${this.job}, and he has ${this.hasDriversLicense ? 'a' : 'no'} driver's license.`;
+        }
+    };
+
+    console.log(fonsImproved.calcAge());
+    console.log(fonsImproved.age);
+    console.log(fonsImproved.getSummary());
+
+
+    // Complex Object with multiple methods 
+    const bankAccount = { 
+        owner: "Fons Jose",
+        movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+        interestRate: 1.2, 
+        pin: 1111,
+
+    //Method to calculate balance
+    calcBalance: function() {
+        this.balance = this.movements.reduce((acc, mov) => acc + mov, 0);
+        return this.balance;
+    },
+
+    // Method to add a movement
+    deposit: function (amount) {
+        this.movements.push(amount);
+        this.calcBalance(); 
+    },
+
+    withdraw: function (amount) {
+        this.movements.push(-amount);
+        this.calcBalance(); 
+    },
+
+    //Method for account summary
+    getStatement: function() {
+        return `${this.owner}'s account balance: ${this.calcBalance()}`;
+    },
+    };
+
+
+
+    console.log(bankAccount.getStatement());
+    bankAccount.deposit(500);
+    console.log(bankAccount.getStatement());
