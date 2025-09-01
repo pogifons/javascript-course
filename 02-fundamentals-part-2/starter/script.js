@@ -243,6 +243,90 @@ console.log(`Passing students: ${passing} out of ${grades.length}`);
 
 // Hour 3
 
+
+//The Array Problem
+const fonsArray = [
+    "Fons",
+    "Jose",
+    2025 - 2004,
+    "Student",
+    ["Josh", "Mark", "Adrian"]
+];
+
+console.log(fonsArray[0]);
+console.log(fonsArray[1]);
+
+const fonsObject = {
+    firstName: 'Fons',
+    lastName: 'Jose',
+    age: 2025 - 2004,
+    job: "Student",
+    friends: ["Josh", "Mark", "Adrian"],
+};
+console.log(fonsObject);
+
+//Property access methods
+//Dot notation
+console.log(fonsObject.firstName);
+console.log(fonsObject.lastName);
+console.log(fonsObject.age);
+
+//Bracket notation
+console.log(fonsObject['firstName']);
+console.log(fonsObject['lastName']);
+console.log(fonsObject['age']);
+
+const nameKey = "Name";
+console.log(fonsObject['first' + nameKey]);
+
+//modifying existing properties
+fonsObject.job = "Programmer";
+fonsObject["age"] = 21;
+console.log(fonsObject);
+
+//adding new properties
+fonsObject.location = "Philippines";
+fonsObject['twitter'] = "@fonsjose";
+fonsObject.hasDriversLicense = true;
+console.log(fonsObject);
+
+//when to use dot vs bracket notation
+//Object Methods
+const property = "job";
+console.log(fonsObject[property]);
+
+//Object vs Arrays Decision Making
+
+const listOfYears = [1991, 1984, 2008, 2020];
+const shoppingList = ["apples", "bananas", "milk", "bread"];
+const testScores = [85, 92, 78, 96];
+
+const person = {
+  name: "Fons",
+  age: 21,
+  occupation: "Student",
+};
+
+const car = {
+  brand: "Toyota",
+  model: "Camry",
+  year: 2020,
+  color: "blue",
+};
+
+//objects can contains arrays, arrays can contain objects
+const student = {
+  name: "Sarah",
+  grades: [85, 92, 78], 
+  address: {
+    street: "123 Main St",
+    city: "NewYork",
+},
+};
+
+console.log(student.grades[0]);
+console.log(student.address.city);
+
 //Object Methods
 
 const  fons = {
@@ -319,3 +403,68 @@ const fonsImproved = {
     console.log(bankAccount.getStatement());
     bankAccount.deposit(500);
     console.log(bankAccount.getStatement());
+
+
+    // Coding Challenge #3 - User Profile System
+
+const user = {
+  firstName: "Sarah",
+  lastName: "Johnson",
+  birthYear: 1995,
+  location: "New York",
+  interests: ["photography", "travel", "coding"],
+  friends: [
+    { name: "Michael", status: "active" },
+    { name: "Emma", status: "inactive" },
+    { name: "David", status: "active" },
+  ],
+  isActive: true,
+
+  // Calculate age method
+  calcAge: function () {
+    const currentYear = new Date().getFullYear();
+    this.age = currentYear - this.birthYear;
+    return this.age;
+  },
+
+  // Add friend method
+  addFriend: function (name, status = "active") {
+    this.friends.push({ name, status });
+    return this.friends.length;
+  },
+
+  // Get active friends count
+  getActiveFriends: function () {
+    return this.friends.filter(friend => friend.status === "active").length;
+  },
+
+  // Toggle active status
+  toggleStatus: function () {
+    this.isActive = !this.isActive;
+    return this.isActive;
+  },
+
+  // Generate profile summary
+  getSummary: function () {
+    this.calcAge();
+    return `
+==============================
+User Profile Summary
+------------------------------
+${this.firstName} ${this.lastName}
+${this.age}
+${this.location}
+${this.isActive ? "Online" : "Offline"}
+${this.friends.length} total (${this.getActiveFriends()} active)
+${this.interests.join(", ")}
+==============================
+    `;
+  },
+};
+
+// Test your user profile system
+console.log(user.getSummary());
+user.addFriend("Alex", "active");
+user.toggleStatus();
+console.log(`\nAfter updates:`);
+console.log(user.getSummary());
