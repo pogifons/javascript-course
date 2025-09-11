@@ -1,38 +1,69 @@
 'use strict';
  
-// DOM Element Selection - The Foundation
-console.log('=== DOM ELEMENT SELECTION ===');
+//CONSTANTS
+const MIN_NUMBER = 1;
+const MAX_NUMBER = 20;
+const START_SCORE = 20;
  
-// Select elements by class name
+//Cached Selectors
+const bodyEl = document.body;
 const messageEl = document.querySelector('.message');
-console.log(messageEl);
-console.log(messageEl.textContent);
-messageEl.textContent = 'Hello from JavaScript';
- 
 const scoreEl = document.querySelector('.score');
-console.log(`Score element:`, scoreEl);
-scoreEl.textContent = 50;
- 
 const numberEl = document.querySelector('.number')
-//numberEl.textContent = 15;
- 
-const highscoreEl = document.querySelector('.highscor');
-//highscoreEl.textContent = 100;
- 
+const highscoreEl = document.querySelector('.highscore');
 const guessEl = document.querySelector('.guess')
-//guessEl.value = 17;
+const checkBtnEl = document.querySelector('.check');
+const againBtnEl = document.querySelector('.again');
  
-let secretNumber = Math.trunc(Math.random() * 20) + 1;
+ 
+//UI HELPERS
+function setMessage(text) {
+  messageEl.textContent = text;
+}
+function setNumber(value) {
+  numberEl.textContent = value;
+}
+function setScore(value) {
+  scoreEl.textContent = value;
+}
+function setHighscore(value) {
+  highscoreEl.textContent = value;
+}
+function setBackground(color) {
+  bodyEl.style.backgroundColor = color;
+}
+function disablePlay(disabled) {
+  guessInputEl.disabled = disabled;
+  checkBtnEl.disabled = disabled;
+}
+function clearInput() {
+  guessEl.value = '';
+}
+ 
+ 
+//GAME STATES
+ 
+let secretNumber = Math.trunc(Math.random() * MAX_NUMBER) + MIN_NUMBER;
 console.log(`Secret Number`, secretNumber);
  
 //Track the current Score// this is your current score
-let score = 20;
+let score = START_SCORE;
 let highscore = 0;
+//reset game state
+function resetGameState() {
+  score = START_SCORE;
+  secretNumber = Math.trunc(Math.random() * MAX_NUMBER) + MIN_NUMBER;
+}
  
-document.querySelector('.score').textContent = score;
-document.querySelector('.highscore') .textContent = highscore;
- 
-console.log(`Game State Initialized`);
+function renderInitialUI() {
+  setMessage('Start guessing...');
+  setNumber('?');
+  setScore(score);
+  clearInput();
+  disablePlay(false);
+  setBackground('');
+}
+renderInitialUI();
  
 // Basic Game Logic
 document.querySelector('.check').addEventListener('click', function () {
@@ -107,4 +138,3 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('.check').disabled = false;
   document.body.style.backgroundColor = '';
 });
- 
