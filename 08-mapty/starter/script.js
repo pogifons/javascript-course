@@ -96,4 +96,150 @@ console.log(
   run1 instanceof Workout,
   cycling1 instanceof Workout
 );
+
+
+// HOUR 2: Geolocation & Interactive Maps
+cconsole.log('=== TESTING GEOLOCATION API ===');
+class App {
+    #map;
+    #mapZoomLevel = 13;
+    #mapEvent;
+    #workouts = [];
  
+    constructor() {
+        this._getPosition();
+    }
+ 
+    _getPosition() {
+    if (navigator.geolocation) {
+        console.log('🔍 Requesting user location...');
+        navigator.geolocation.getCurrentPosition(
+        this._loadMap.bind(this),
+        {
+            timeout: 10000,
+            enableHighAccuracy: true,
+            maximumAge: 600000,
+        }
+        );
+    } else {
+        alert('❌ Geolocation is not supported by this browser');
+        this._loadDefaultMap();
+    }
+    }
+    _handleLocationError(error) {
+            console.error('Geolocation error:', error);
+    
+            let message = 'Could not get your position. ';
+    
+            switch (error.code) {
+            case error.PERMISSION_DENIED:
+                message +=
+                'Location access was denied. Please enable location services and refresh the page.';
+                break;
+            case error.POSITION_UNAVAILABLE:
+                message += 'Location information is unavailable.';
+                break;
+            case error.TIMEOUT:
+                message += 'Location request timed out.';
+                break;
+            default:
+                message += 'An unknown error occurred.';
+                break;
+            }
+    
+            alert(`📍 ${message}`);
+            this._loadDefaultMap();
+    }
+    
+    _loadMap (position) {
+        const { latitude, longitude } = position.coords;
+        console.log(`Loading map at coordinates: ${latitude}, ${longitude}`);
+    
+        // create coordinate array
+        const coords = [latitude, longitude];
+    
+        // initialize map and center at users position
+        this.#map = L.map('map').setView(coords, this.#mapZoomLevel);
+    
+        // add open street maps
+        L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }) .addTo(this.#map);
+    
+        // add a marker to the users location
+        L.marker(coords).addTo(this.#map).bindPopup('You are here!').openPopup();
+ 
+        // new code here
+        this.#map.on('click', function (mapEvent){
+            console.log('Map clicked!', mapEvent);
+ 
+            //extract coordinate when we click a part of the map
+            const { lat, lng } = mapEvent.latlng;
+            console.log(`Map clicked at: ${lat.toFixed(4)},${lng.toFixed(4)}`);
+ 
+            //create the marker na blue
+            L.marker([lat, lng]).addTo(this.#map) .bindPopup(`Workout Location<br>Lat: ${lat.toFixed(4)}, ${lng.toFixed(4)}`) .openPopup();
+        });
+    
+        console.log('map loaded successfully at users location');
+    }
+ 
+    function loadDefaultMap (){
+        console.log('Loading default map location around Manila');
+        const defaultCoords = [14.604, 120.994];
+        const map = L.map('map') .setView(defaultCoords, this.#mapZoomLevel);
+ 
+        // add open street map
+        L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        }) .addTo(this.#map);
+ 
+        this.#map.on('click', function (mapEvent){
+            console.log('Map clicked!', mapEvent);
+ 
+            //extract coordinate when we click a part of the map
+            const { lat, lng } = mapEvent.latlng;
+            console.log(`Map clicked at: ${lat.toFixed(4)},${lng.toFixed(4)}`);
+ 
+            //create the marker na blue
+            L.marker([lat, lng])
+            .addTo(this.#map) 
+            .bindPopup(`Workout Location<br>Lat: ${lat.toFixed(4)}, ${lng.toFixed(4)}`
+          ) 
+            .openPopup();
+        });
+ 
+        console.log('Default map loaded successfully');
+    }
+}
+ 
+class App {
+  #map;
+  #mapZoomLevel = 13;
+  #mapEvent;
+  #workouts = [];
+
+  constructor() {
+    console.log('App is starting...'); 
+    this._getPosition();
+  }
+
+  _getPosition() {
+    //
+}
+
+_handleLocationError(error) {
+  //
+}
+
+_loadDefaultMap() {
+  //
+}
+_loadMap() { 
+  //
+}
+_showForm(mapE) {
+  //
+}
+}
+    
